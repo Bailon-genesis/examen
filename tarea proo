@@ -1,0 +1,115 @@
+import { Empleado } from "./Empleado";
+import { Estudiante } from "./Estudiante";
+import { Profesor } from "./Profesor";
+import { PersonalServicio } from "./PersonalServicio";
+
+export class Empresa {
+    public empleados: Empleado[];
+    public estudiantes: Estudiante[];
+    public profesores: Profesor[];
+    public personalServicio: PersonalServicio[];
+  
+    constructor() {
+      this.empleados = [];
+      this.estudiantes = [];
+      this.profesores = [];
+      this.personalServicio = [];
+    }
+  public agregarEmpleado(
+    nombre: string,
+    apellidos: string,
+    identificacion: string,
+    estadoCivil: string,
+    anioIncorporacion: number,
+    despacho: string
+  ): void {
+    const empleado = new Empleado(
+      nombre,
+      apellidos,
+      identificacion,
+      estadoCivil,
+      anioIncorporacion,
+      despacho
+    );
+    this.empleados.push(empleado);
+  }
+
+  public agregarEstudiante(
+    nombre: string,
+    apellidos: string,
+    identificacion: string,
+    estadoCivil: string,
+    curso: string
+  ): void {
+    const estudiante = new Estudiante(
+      nombre,
+      apellidos,
+      identificacion,
+      estadoCivil,
+      curso
+    );
+    this.estudiantes.push(estudiante);
+  }
+
+  public agregarProfesor(
+    nombre: string,
+    apellidos: string,
+    identificacion: string,
+    estadoCivil: string,
+    departamento: string
+  ): void {
+    const profesor = new Profesor(
+      nombre,
+      apellidos,
+      identificacion,
+      estadoCivil,
+      departamento
+    );
+    this.profesores.push(profesor);
+  }
+
+  public agregarPersonalServicio(
+    nombre: string,
+    apellidos: string,
+    identificacion: string,
+    estadoCivil: string,
+    seccion: string
+  ): void {
+    const personalServicio = new PersonalServicio(
+      nombre,
+      apellidos,
+      identificacion,
+      estadoCivil,
+      seccion
+    );
+    this.personalServicio.push(personalServicio);
+  }
+
+  public imprimirInformacion(): void {
+    console.log("Empleados (cantidad: " + this.empleados.length + "):");
+    this.empleados.forEach((empleado) => {
+      empleado.imprimirInformacion();
+      console.log("");
+    });
+
+    console.log("Estudiantes (cantidad: " + this.estudiantes.length + "):");
+    this.estudiantes.forEach((estudiante) => {
+      estudiante.imprimirInformacion();
+      console.log("");
+    });
+
+    console.log("Profesores (cantidad: " + this.profesores.length + "):");
+    this.profesores.forEach((profesor) => {
+      profesor.imprimirInformacion();
+      console.log("");
+    });
+
+    console.log(
+      "Personal de Servicio (cantidad: " + this.personalServicio.length + "):"
+    );
+    this.personalServicio.forEach((personal) => {
+      personal.imprimirInformacion();
+      console.log("");
+    });
+  }
+}
